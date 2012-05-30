@@ -6,4 +6,4 @@
                              cowboy]},
               {mod,{saloon_app,[]}},
               {env,[]},
-              {modules,[saloon_app]}]}.
+              {modules,[saloon_app,saloon_sup]}]}.
