@@ -20,4 +20,4 @@ dispatch() ->
 				},
 				{'_', saloon_main, []}
 			]}
-	]
+	].

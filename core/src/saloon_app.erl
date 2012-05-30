@@ -1,11 +1,17 @@
 -module(saloon_app).
 
--include("../site/conf/dispatch.hrl").
-
 -behaviour(application).
 
 %% Application callbacks
 -export([start/0, start/2, stop/1]).
+
+
+%%
+%% Getting dispatcher configuration
+%%
+
+-include("../site/conf/dispatch.hrl").
+
 
 %%
 %% Application callbacks
