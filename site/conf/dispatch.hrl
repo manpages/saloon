@@ -14,8 +14,13 @@ dispatch() ->
 				{[<<"static">>, '...'], cowboy_http_static, 
 					[
 						{directory, <<"./static">>},
-						{mimetypes, {fun mimetypes:path_to_mimes/2, default}},
-						{etag, {attributes, [filepath, filesize, inode, mtime]}}
+						{mimetypes, [
+								{<<".txt">>, [<<"text/plain">>]},
+								{<<".html">>, [<<"text/html">>]},
+								{<<".htm">>, [<<"text/html">>]},
+								{<<".css">>, [<<"text/css">>]},
+								{<<".js">>, [<<"application/javascript">>]}
+						]}
 					]
 				},
 				{'_', saloon_main, []}

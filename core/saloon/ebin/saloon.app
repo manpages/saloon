@@ -2,8 +2,8 @@
              [{description,"Saloon for cowboys"},
               {vsn,"0.1.0"},
               {registered,[]},
-              {applications,[kernel,stdlib,crypto,public_key,ssl,fission,
-                             cowboy]},
+              {applications,[kernel,inets,stdlib,crypto,public_key,ssl,
+                             fission,cowboy]},
               {mod,{saloon_app,[]}},
               {env,[]},
               {modules,[saloon_app,saloon_sup]}]}.

@@ -5,6 +5,7 @@
 		{registered, []},
 		{applications, [
 							kernel,
+							inets,
 							stdlib,
 							crypto,
 							public_key,
