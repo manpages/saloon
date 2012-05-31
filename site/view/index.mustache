@@ -1,4 +1,18 @@
 {{t_header}}
-Содержимое страницы:
-{{content}}
+<div id="layout">
+	<div id="header">
+		{{navigation}}
+	</div>
+	<noscript><div class="error"><h1>{{l_javascript_error}}</h1></div><br /></noscript>
+	<!--[if lt IE 9]><div class="error"><h1>{{l_ie_error}}: 
+	<br /><a href="http://windows.microsoft.com/en-GB/internet-explorer/downloads/ie-9/worldwide-languages">Internet Explorer 9</a></h1></div><![endif]-->
+	<div id="container">
+		<div id="content">
+			{{content}}
+		</div>
+	</div>
+	<div id="footer">
+		{{footer}}
+	</div>
+</div>
 {{t_footer}}

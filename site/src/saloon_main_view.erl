@@ -10,8 +10,10 @@
 %% From index.mustache. Decorator pattern test :)
 %%
 
-content() -> mustache:render(?MODULE, "view/main/saloon_main.mustache").
 title() -> "Saloon for cowboys.".
+content() -> mustache:render(?MODULE, "view/main/saloon_main.mustache").
+header() -> "".
+footer() -> "<hr /><div style=\"text-align:center\">IL Design Ltd., MIT License, 2012</div>".
 
 
 %%

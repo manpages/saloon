@@ -19,3 +19,17 @@
 %% 		_ -> "russian letters"
 %% 	end.
 %%
+
+l_javascript_error() ->
+	case get(ulang) of
+		ru -> "Сайт использует javascript!";
+		lv -> "Saitei ir vajadzīgs javascript!";
+		_  -> "The website makes extensive use of javascript!"
+	end.
+
+l_ie_error() ->
+	case get(ulang) of
+		ru -> "Ваш Internet Exporer морально устарел, пожалуйста, скачайте новый с сайта";
+		lv -> "Lūdzu lietot jauno Internet Exporer";
+		_  -> "Your Internet Explorer version is neither supported by Microsoft nor by us. Pleae upgrade"
+	end.
