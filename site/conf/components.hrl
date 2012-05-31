@@ -8,3 +8,6 @@
 
 t_header() -> 
 	mustache:render(?MODULE, "view/t_header.mustache").
+
+t_footer() -> 
+	mustache:render(?MODULE, "view/t_footer.mustache").

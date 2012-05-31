@@ -5,9 +5,24 @@
 -include("conf/locale.hrl").
 -include("conf/components.hrl").
 
+
+%%
+%% From index.mustache. Decorator pattern test :)
+%%
+
+content() -> mustache:render(?MODULE, "view/main/saloon_main.mustache").
+title() -> "Saloon for cowboys.".
+
+
+%%
+%% From saloon_main.mustache
+%%
+
 junk() -> "a page about the main idea of Burroughs".
 
-title() -> "Saloon for cowboys.".
+
+%--------------------------------------------------------------------------------------------
+
 
 %%
 %% Compile-related thingie apparently.

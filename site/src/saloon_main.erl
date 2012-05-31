@@ -9,7 +9,7 @@ init({_Any, http}, Req, []) ->
 
 handle(Req, State) ->
 	{ok, Rep} = cowboy_http_req:reply(
-		200, [], mustache:render(saloon_main_view, "view/saloon_main.mustache"), Req
+		200, [], mustache:render(saloon_main_view, "view/index.mustache"), Req
 	),
 	{ok, Rep, State}.
 
