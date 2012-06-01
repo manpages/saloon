@@ -29,18 +29,15 @@ login_by_id(UID, Password) ->
 	end
 .
 
-add_user(Email, {md5, Password}) ->
+add_user(Profile, {md5, Password}) ->
+	Email = Profile#profile.email,
 	ExistingID = fission_syn:get({user, Email, id}),
 	case ExistingID of
 		false ->
 			UID = fission_syn:inc_v({user, nextid}),
 			fission_list:push(users, UID),
 			fission_syn:set({user, UID, lastseen}, 0),
-			fission_syn:set({user, UID, profile}, #profile{
-				lastname = "",
-				firstname = "",
-				email = Email
-			}),
+			fission_syn:set({user, UID, profile}, Profile),
 			fission_syn:set({user, UID, password}, Password),
 			fission_syn:set({user, Email, id}, UID),
 			
