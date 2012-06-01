@@ -9,7 +9,7 @@
 	login_by_id/2,
 	login/2,
 	add_user/2,
-	parse_cookie/1
+	from_cookie/1
 ]).
 
 -include_lib("../include/user.hrl").
@@ -54,8 +54,8 @@ cookie_value(UID, Password) ->
 	integer_to_list(UID) ++ "." ++ Salt ++ "." ++ Hash
 .
 
-parse_cookie(Cookie) ->
-	catch case string:tokens(Cookie, ".") of
+from_cookie(Cookie) ->
+	catch case string:tokens(saloon_util:to_list(Cookie), ".") of
 		[SUID, Salt, Hash] ->
 			UID = list_to_integer(SUID),
 			Password = fission_syn:get_v({user, UID, password}),
