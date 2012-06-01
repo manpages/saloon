@@ -9,7 +9,8 @@
 -define(DEV_MODE, true).
 
 prepare(_Req) ->
-	-ifdef(?DEV_MODE),
-	os:cmd("sh ./f5.sh"),
-	-endif,
+	case ?DEV_MODE of
+		true -> os:cmd("sh ./f5.sh");
+		_ -> ok
+	end,
 	ok.
