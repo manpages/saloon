@@ -1,5 +1,8 @@
 -module(saloon_util).
 -export([
+	pk/2,
+	ck/2,
+
 	md5/1,
 
 	to_int/1,
@@ -20,6 +23,11 @@
 
 	log/1
 ]).
+
+pk(Key, Req) -> %% Get value for post key
+	proplists:get_value(Key, element(1, cowboy_http_req:body_qs(Req)), undefined).
+ck(Key, Req) -> %% TODO!!!
+	proplists:get_value(Key, element(1, {[], []}), undefined).
 
 md5(Value) ->
 	<<X:128/big-unsigned-integer>> = .erlang:md5(to_binary(Value)),
