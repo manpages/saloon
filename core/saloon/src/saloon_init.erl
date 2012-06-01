@@ -8,9 +8,10 @@
 
 -define(DEV_MODE, true).
 
-prepare(_Req) ->
+prepare(Req) ->
 	case ?DEV_MODE of
 		true -> os:cmd("sh ./f5.sh"); %dirty-dirty
 		_ -> ok
 	end,
+
 	ok.
