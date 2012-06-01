@@ -10,7 +10,7 @@
 
 prepare(_Req) ->
 	case ?DEV_MODE of
-		true -> os:cmd("sh ./f5.sh");
+		true -> Out = os:cmd("sh ./f5.sh"), io:format("~ts~n", [Out]);
 		_ -> ok
 	end,
 	ok.
