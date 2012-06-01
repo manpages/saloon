@@ -10,7 +10,7 @@
 
 prepare(_Req) ->
 	case ?DEV_MODE of
-		true -> Out = os:cmd("sh ./f5.sh"); %dirty-dirty
+		true -> os:cmd("sh ./f5.sh"); %dirty-dirty
 		_ -> ok
 	end,
 	ok.
