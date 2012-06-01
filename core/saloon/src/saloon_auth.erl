@@ -51,11 +51,11 @@ cookie_value(UID, Password) ->
 	random:seed(erlang:now()),
 	Salt = integer_to_list(random:uniform(1000000)),
 	Hash = saloon_util:md5(integer_to_list(UID) ++ "-w880i-" ++ Salt ++ "-" ++ Password),
-	integer_to_list(UID) ++ ":" ++ Salt ++ ":" ++ Hash
+	integer_to_list(UID) ++ "." ++ Salt ++ "." ++ Hash
 .
 
 parse_cookie(Cookie) ->
-	catch case string:tokens(Cookie, ":") of
+	catch case string:tokens(Cookie, ".") of
 		[SUID, Salt, Hash] ->
 			UID = list_to_integer(SUID),
 			Password = fission_syn:get_v({user, UID, password}),
