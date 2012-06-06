@@ -16,6 +16,9 @@
 %%	]).
 
 
+-include_lib("eunit/include/eunit.hrl").
+
+
 user() -> c_get(user).
 user(UID) -> c_set(user, UID).
 
@@ -30,8 +33,11 @@ successes() -> c_get(successes).
 successes(SuccessesPropList) -> c_set(successes, SuccessesPropList).
 successes_push(Success) -> c_set(successes, [Success|c_get(successes)]).
 
-c_get(Key) -> get(Key).
+c_get(Key) -> 
+	?debugFmt("(~p) -> ~p", [Key, get(Key)]),
+	get(Key).
 c_set(Key, Value) -> 
+	?debugFmt("~p = ~p", [Key,Value]),
 	case get(Key) of
 		undefined -> put(Key, Value);
 		_ -> error(ctx_change_forbidden)
