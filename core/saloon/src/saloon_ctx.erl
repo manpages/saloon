@@ -6,7 +6,8 @@
 		language/0, language/1,
 		errors/0, errors/1, errors_push/1,
 		successes/0, successes/1, successes_push/1,
-		c_get/1, c_set/2
+		c_get/1, c_set/2,
+		fill/0
 	]).
 
 %% session level context functions, not implemented
@@ -15,11 +16,11 @@
 %%	]).
 
 
-user() -> c_get(uid).
-user(UID) -> c_set(uid, UID).
+user() -> c_get(user).
+user(UID) -> c_set(user, UID).
 
-language() -> c_get(ulang).
-language(Lang) -> c_set(ulang, Lang).
+language() -> c_get(language).
+language(Lang) -> c_set(language, Lang).
 
 errors() -> c_get(errors).
 errors(ErrorPropList) -> c_set(errors, ErrorPropList).
@@ -35,3 +36,12 @@ c_set(Key, Value) ->
 		undefined -> put(Key, Value);
 		_ -> error(ctx_change_forbidden)
 	end.
+
+fill() ->
+	lists:each(
+		fun(X) -> case c_get(X) of 
+					undefined -> c_set(X, []); 
+					_ -> ok 
+				end 
+		end,
+		[user, language, errors, successes]).
