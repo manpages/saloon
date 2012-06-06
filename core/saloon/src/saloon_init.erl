@@ -16,7 +16,7 @@ prepare(Req) ->
 	UID = case saloon_util:ck(<<"auth">>, Req) of 
 		undefined -> 0;
 		Cookie -> case saloon_auth:from_cookie(Cookie) of
-			UID2 when is_integer(UID2) -> UID2, io:format("Logged in!");
+			UID2 when is_integer(UID2) -> UID2;
 			_ -> 0
 		end
 	end,
@@ -28,6 +28,6 @@ prepare(Req) ->
 		_        -> en
 	end,
 
-	put(uid, UID),
-	put(ulang, Lang),
+	saloon_ctx:user(UID),
+	saloon_ctx:language(Lang),
 	ok.
