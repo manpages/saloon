@@ -28,6 +28,12 @@ prepare(Req) ->
 		_        -> en
 	end,
 
-	saloon_ctx:user(UID),
-	saloon_ctx:language(Lang),
+	case get(user) of 
+		undefined -> saloon_ctx:user(UID);
+		_ -> ok
+	end,
+	case get(language) of
+		undefined -> saloon_ctx:language(Lang);
+		_ -> ok
+	end,
 	ok.
