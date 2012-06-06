@@ -44,7 +44,7 @@ c_set(Key, Value) ->
 	end.
 
 fill() ->
-	lists:each(
+	lists:foreach(
 		fun(X) -> case c_get(X) of 
 					undefined -> c_set(X, []); 
 					_ -> ok 
