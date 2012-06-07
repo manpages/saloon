@@ -28,12 +28,6 @@ prepare(Req) ->
 		_        -> en
 	end,
 
-	case get(user) of 
-		undefined -> saloon_ctx:user(UID);
-		_ -> ok
-	end,
-	case get(language) of
-		undefined -> saloon_ctx:language(Lang);
-		_ -> ok
-	end,
+	put(user, UID),      %% need to force
+	put(language, Lang), %% changes here.
 	ok.

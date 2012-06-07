@@ -34,18 +34,22 @@ successes(SuccessesPropList) -> c_set(successes, SuccessesPropList).
 successes_push(Success) -> c_set(successes, [Success|c_get(successes)]).
 
 c_get(Key) -> 
-	?debugFmt("(~p) -> ~p", [Key, get(Key)]),
-	get(Key).
+	?debugFmt("(~p) -> ~p", [Key, c_get_anyway(Key)]),
+	case c_get_anyway(Key) of 
+		undefined -> error(ctx_not_set);
+		X -> X
+	end.
 c_set(Key, Value) -> 
 	?debugFmt("~p = ~p", [Key,Value]),
 	case get(Key) of
 		undefined -> put(Key, Value);
 		_ -> error(ctx_change_forbidden)
 	end.
+c_get_anyway(Key) -> get(Key).
 
 fill() ->
 	lists:foreach(
-		fun(X) -> case c_get(X) of 
+		fun(X) -> case c_get_anyway(X) of 
 					undefined -> c_set(X, []); 
 					_ -> ok 
 				end 
