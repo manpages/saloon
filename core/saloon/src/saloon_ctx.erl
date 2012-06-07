@@ -27,11 +27,11 @@ language(Lang) -> c_set(language, Lang).
 
 errors() -> c_get(errors).
 errors(ErrorPropList) -> c_set(errors, ErrorPropList).
-errors_push(Error) -> c_set(errors, [Error|c_get(errors)]).
+errors_push(Error) -> c_set(errors, [Error|c_get_anyway(errors)]).
 
 successes() -> c_get(successes).
 successes(SuccessesPropList) -> c_set(successes, SuccessesPropList).
-successes_push(Success) -> c_set(successes, [Success|c_get(successes)]).
+successes_push(Success) -> c_set(successes, [Success|c_get_anyway(successes)]).
 
 c_get(Key) -> 
 	?debugFmt("(~p) -> ~p", [Key, c_get_anyway(Key)]),
